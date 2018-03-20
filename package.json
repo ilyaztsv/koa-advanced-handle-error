@@ -1,0 +1,54 @@
+{
+  "name": "koa-advanced-handle-error",
+  "version": "0.0.1",
+  "description": "Powerful error handler middleware for koa@2.x.x",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "dist",
+    "__tests__",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "jest --no-cache --config ./jest.config.js",
+    "coverage": "npm run test -- --coverage",
+    "lint": "eslint --ext .js --fix . && prettier --list-different --write \"**/*.{js,jsx,json}\"",
+    "flow": "glow",
+    "ci": "npm run flow && npm run lint && npm run coverage && npm run build",
+    "build": "rollup index.js --output.format cjs --output.file dist/index.js",
+    "precommit": "npm run flow && npm run lint && npm run test"
+  },
+  "precommit": "precommit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyaztsv/koa-advanced-handle-error.git"
+  },
+  "keywords": [
+    "koa",
+    "middleware",
+    "errorhandler"
+  ],
+  "author": "Ilya Zaytsev <https://twitter.com/ilyaztsv> (https://github.com/ilyaztsv)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilyaztsv/koa-advanced-handle-error/issues"
+  },
+  "homepage": "https://github.com/ilyaztsv/koa-advanced-handle-error#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-stage-0": "^7.0.0-beta.42",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.0.0-alpha.0",
+    "eslint": "^4.8.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-flowtype-errors": "^3.5.1",
+    "eslint-plugin-prettier": "^2.5.0",
+    "flow-bin": "^0.67.1",
+    "glow": "^1.2.2",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.10.2",
+    "rollup": "^0.57.1"
+  }
+}

@@ -1,0 +1,11 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/dist/.*
+
+[include]
+
+[libs]
+flow
+
+[options]
+module.file_ext=.js
