@@ -6,8 +6,6 @@ node_js:
   - '8'
   - '9'
   - 'lts/*'
-env:
-  - NODE_ENV=production
 before_install:
   - npm i -g rollup@0.57.1
 script:
