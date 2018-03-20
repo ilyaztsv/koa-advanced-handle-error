@@ -48,6 +48,7 @@
     "eslint-plugin-prettier": "^2.5.0",
     "flow-bin": "^0.67.1",
     "glow": "^1.2.2",
+    "jest": "^22.4.2",
     "pre-commit": "^1.2.2",
     "prettier": "^1.10.2"
   }
