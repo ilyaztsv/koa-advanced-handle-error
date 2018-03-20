@@ -49,7 +49,6 @@
     "flow-bin": "^0.67.1",
     "glow": "^1.2.2",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.10.2",
-    "rollup": "^0.57.1"
+    "prettier": "^1.10.2"
   }
 }
