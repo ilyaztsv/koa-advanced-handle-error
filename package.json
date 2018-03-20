@@ -25,9 +25,10 @@
     "url": "git+https://github.com/ilyaztsv/koa-advanced-handle-error.git"
   },
   "keywords": [
-    "koa",
+    "koa2",
     "middleware",
-    "errorhandler"
+    "error-handling",
+    "javascript"
   ],
   "author": "Ilya Zaytsev <https://twitter.com/ilyaztsv> (https://github.com/ilyaztsv)",
   "license": "MIT",
