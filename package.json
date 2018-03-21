@@ -1,6 +1,6 @@
 {
   "name": "koa-advanced-handle-error",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Powerful error handler middleware for koa@2.x.x",
   "main": "index.js",
   "files": [
