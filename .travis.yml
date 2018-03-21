@@ -6,7 +6,5 @@ node_js:
   - '8'
   - '9'
   - 'lts/*'
-before_install:
-  - npm i -g rollup@0.57.1
 script:
   - npm run ci
