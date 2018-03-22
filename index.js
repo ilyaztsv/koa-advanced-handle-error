@@ -1,21 +1,13 @@
 // @flow
 
-import Application from 'koa';
-import type { Context } from 'koa';
-import type { Middleware } from 'koa';
+import type { Context, Middleware } from 'koa';
+import type { ErrorType } from './types/error-type';
+import type { WarningType } from './types/warning-type';
 
-type ErrorType =
-  | 'process:uncaughtException'
-  | 'process:rejectionHandled'
-  | 'process:unhandledRejection'
-  | 'app:error';
+const INTERNAL_SEVER_ERROR_CODE: number = 500;
+const ERROR_MESSAGE: string = 'An error occurred';
 
-type WarningType = 'process:warning';
-
-export const INTERNAL_SEVER_ERROR_CODE: number = 500;
-export const ERROR_MESSAGE: string = 'An error occurred';
-
-export default (
+const handleError = (
   app: any,
   onError: (error: Error, errorType: string) => void,
   onWarning: (warning: Error, warningType: WarningType) => void
@@ -77,3 +69,8 @@ export default (
     await next();
   };
 };
+
+module.exports = handleError;
+module.exports.default = handleError;
+module.exports.INTERNAL_SEVER_ERROR_CODE = INTERNAL_SEVER_ERROR_CODE;
+module.exports.ERROR_MESSAGE = ERROR_MESSAGE;

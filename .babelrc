@@ -1,12 +1,16 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-stage-0",
-    "@babel/preset-flow"
-  ],
-  "plugins": [
-    "@babel/plugin-syntax-flow",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-transform-flow-strip-types"
-  ]
+  "env": {
+    "test": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-stage-0",
+        "@babel/preset-flow"
+      ],
+      "plugins": [
+        "@babel/plugin-syntax-flow",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-flow-strip-types"
+      ]
+    }
+  }
 }

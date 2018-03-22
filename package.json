@@ -4,18 +4,18 @@
   "description": "Powerful error handler middleware for koa@2.x.x",
   "main": "index.js",
   "files": [
-    "dist/*.js",
+    "lib/*.js",
     "package.json",
     "README.md"
   ],
   "scripts": {
-    "test": "jest --no-cache --config ./jest.config.js",
+    "test": "BABEL_ENV=test jest --no-cache --config ./jest.config.js",
     "coverage": "npm run test -- --coverage",
     "lint": "eslint --ext .js --fix . && prettier --list-different --write \"**/*.{js,jsx,json}\"",
     "flow": "glow",
     "ci": "npm run flow && npm run lint && npm run coverage && npm run build",
-    "build": "rollup -c",
-    "precommit": "npm run flow && npm run lint && npm run test"
+    "precommit": "npm run flow && npm run lint && npm run test",
+    "build": "node build.js"
   },
   "precommit": "precommit",
   "repository": {
@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-flow": "^7.0.0-beta.42",
     "@babel/preset-stage-0": "^7.0.0-beta.42",
+    "babel": "^6.23.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^23.0.0-alpha.0",
@@ -50,12 +51,11 @@
     "eslint-plugin-flowtype-errors": "^3.5.1",
     "eslint-plugin-prettier": "^2.5.0",
     "flow-bin": "^0.68.0",
+    "fs-path": "0.0.24",
     "glow": "^1.2.2",
     "jest": "^22.4.2",
     "koa": "^2.5.0",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.10.2",
-    "rollup": "^0.57.1",
-    "rollup-plugin-flow": "^1.1.1"
+    "prettier": "^1.10.2"
   }
 }
