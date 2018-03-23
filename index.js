@@ -24,7 +24,14 @@ const handleError = (
 
   const processError = (err: Error, errorType: ErrorType, ctx?: Context) => {
     if (ctx) {
-      if (ctx.body === undefined && ctx.request.method !== 'OPTIONS') {
+      if (
+        (ctx.body === undefined && ctx.request.method !== 'OPTIONS') ||
+        (ctx.body !== undefined &&
+          // $FlowFixMe
+          ctx.body._readableState !== undefined &&
+          // $FlowFixMe
+          ctx.body._readableState.ended === false)
+      ) {
         ctx.status = NOT_FOUND_CODE;
         ctx.body = NOT_FOUND_MESSAGE;
       } else {
