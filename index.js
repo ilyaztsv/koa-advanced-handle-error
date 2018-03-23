@@ -5,11 +5,13 @@ import type { ErrorType } from './types/error-type';
 import type { WarningType } from './types/warning-type';
 
 const INTERNAL_SEVER_ERROR_CODE: number = 500;
-const ERROR_MESSAGE: string = 'An error occurred';
+const INTERNAL_SEVER_ERROR_MESSAGE: string = 'Internal Server Error';
+const NOT_FOUND_CODE: number = 404;
+const NOT_FOUND_MESSAGE: string = 'Not Found';
 
 const handleError = (
   app: any,
-  onError: (error: Error, errorType: string) => void,
+  onError: (error: Error, errorType: string, ctx?: Context) => void,
   onWarning: (warning: Error, warningType: WarningType) => void
 ): Middleware => {
   if (typeof onError !== 'function') {
@@ -22,11 +24,16 @@ const handleError = (
 
   const processError = (err: Error, errorType: ErrorType, ctx?: Context) => {
     if (ctx) {
-      ctx.status = INTERNAL_SEVER_ERROR_CODE;
-      ctx.body = ERROR_MESSAGE;
+      if (ctx.body === undefined && ctx.request.method !== 'OPTIONS') {
+        ctx.status = NOT_FOUND_CODE;
+        ctx.body = NOT_FOUND_MESSAGE;
+      } else {
+        ctx.status = INTERNAL_SEVER_ERROR_CODE;
+        ctx.body = INTERNAL_SEVER_ERROR_MESSAGE;
+      }
     }
 
-    onError(err, errorType);
+    onError(err, errorType, ctx);
   };
 
   const processWarning = (warning: Error, warningType: WarningType) => {
@@ -73,4 +80,6 @@ const handleError = (
 module.exports = handleError;
 module.exports.default = handleError;
 module.exports.INTERNAL_SEVER_ERROR_CODE = INTERNAL_SEVER_ERROR_CODE;
-module.exports.ERROR_MESSAGE = ERROR_MESSAGE;
+module.exports.INTERNAL_SEVER_ERROR_MESSAGE = INTERNAL_SEVER_ERROR_MESSAGE;
+module.exports.NOT_FOUND_CODE = NOT_FOUND_CODE;
+module.exports.NOT_FOUND_MESSAGE = NOT_FOUND_MESSAGE;
