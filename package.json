@@ -33,6 +33,9 @@
     "url": "https://github.com/ilyaztsv/koa-advanced-handle-error/issues"
   },
   "homepage": "https://github.com/ilyaztsv/koa-advanced-handle-error#readme",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.42",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.42",
