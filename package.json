@@ -12,9 +12,8 @@
     "test": "BABEL_ENV=test jest --no-cache --config ./jest.config.js",
     "coverage": "npm run test -- --coverage",
     "lint": "eslint --ext .js --fix . && prettier --list-different --write \"**/*.{js,jsx,json}\"",
-    "flow": "glow",
-    "ci": "npm run flow && npm run lint && npm run coverage && npm run build",
-    "precommit": "npm run flow && npm run lint && npm run test",
+    "ci": "npm run lint && npm run coverage && npm run build",
+    "precommit": "npm run lint && npm run test",
     "build": "node build.js"
   },
   "precommit": "precommit",
@@ -37,10 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.42",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.42",
-    "@babel/plugin-syntax-flow": "^7.0.0-beta.42",
-    "@babel/plugin-transform-flow-strip-types": "^7.0.0-beta.42",
     "@babel/preset-env": "^7.0.0-beta.42",
-    "@babel/preset-flow": "^7.0.0-beta.42",
     "@babel/preset-stage-0": "^7.0.0-beta.42",
     "babel": "^6.23.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -48,13 +44,9 @@
     "babel-jest": "^23.0.0-alpha.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype-errors": "^3.5.1",
     "eslint-plugin-prettier": "^2.5.0",
-    "flow-bin": "^0.68.0",
     "fs-path": "0.0.24",
-    "glow": "^1.2.2",
     "jest": "^22.4.2",
-    "koa": "^2.5.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.10.2"
   }
