@@ -1,19 +1,15 @@
-// @flow
-
-import type { Context, Middleware } from 'koa';
-import type { ErrorType } from './types/error-type';
-import type { WarningType } from './types/warning-type';
-
-const INTERNAL_SEVER_ERROR_CODE: number = 500;
-const INTERNAL_SEVER_ERROR_MESSAGE: string = 'Internal Server Error';
-const NOT_FOUND_CODE: number = 404;
-const NOT_FOUND_MESSAGE: string = 'Not Found';
+const INTERNAL_SEVER_ERROR_CODE = 500;
+const INTERNAL_SEVER_ERROR_MESSAGE = 'Internal Server Error';
+const NOT_FOUND_CODE = 404;
+const NOT_FOUND_MESSAGE = 'Not Found';
 
 const handleError = (
-  app: any,
-  onError: (error: Error, errorType: string, ctx?: Context) => void,
-  onWarning: (warning: Error, warningType: WarningType) => void
-): Middleware => {
+  app,
+  // (error, errorType, ctx) => void
+  onError,
+  // (warning, warningType) => void
+  onWarning
+) => {
   if (typeof onError !== 'function') {
     throw new TypeError('onError must be a function');
   }
@@ -22,14 +18,12 @@ const handleError = (
     throw new TypeError('onWarning must be a function');
   }
 
-  const processError = (err: Error, errorType: ErrorType, ctx?: Context) => {
+  const processError = (err, errorType, ctx) => {
     if (ctx) {
       if (
         (ctx.body === undefined && ctx.request.method !== 'OPTIONS') ||
         (ctx.body !== undefined &&
-          // $FlowFixMe
           ctx.body._readableState !== undefined &&
-          // $FlowFixMe
           ctx.body._readableState.ended === false)
       ) {
         ctx.status = NOT_FOUND_CODE;
@@ -43,7 +37,7 @@ const handleError = (
     onError(err, errorType, ctx);
   };
 
-  const processWarning = (warning: Error, warningType: WarningType) => {
+  const processWarning = (warning, warningType) => {
     onWarning(warning, warningType);
   };
 
@@ -79,7 +73,7 @@ const handleError = (
     processWarning(warning, 'process:warning');
   });
 
-  return async (ctx: Context, next) => {
+  return async (ctx, next) => {
     await next();
   };
 };

@@ -5,7 +5,7 @@ module.exports = {
     sourceType: 'module',
     ecmaVersion: 8
   },
-  plugins: ['prettier', 'flowtype-errors'],
+  plugins: ['prettier'],
   extends: ['prettier', 'plugin:prettier/recommended'],
   env: {
     browser: false,
@@ -13,7 +13,6 @@ module.exports = {
     jest: true
   },
   rules: {
-    'flowtype-errors/show-errors': 2,
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     indent: 0,
     semi: ['error', 'always'],

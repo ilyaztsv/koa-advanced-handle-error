@@ -2,9 +2,7 @@ const fs = require('fs-path');
 
 require('@babel/core').transformFile(
   'index.js',
-  {
-    plugins: ['@babel/plugin-transform-flow-strip-types']
-  },
+  {},
   (err, result) => {
     if (err) {
       console.error(err);
