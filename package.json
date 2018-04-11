@@ -4,9 +4,8 @@
   "description": "Powerful error handler middleware for koa@2.x.x",
   "main": "lib/index.js",
   "files": [
-    "lib/*.js",
-    "package.json",
-    "README.md"
+    "middleware",
+    "lib"
   ],
   "scripts": {
     "test": "BABEL_ENV=test jest --no-cache --config ./jest.config.js",
