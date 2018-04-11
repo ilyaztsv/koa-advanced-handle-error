@@ -4,7 +4,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest'
   },
   coverageDirectory: '<rootDir>/coverage',
-  collectCoverageFrom: ['middleware/index.js', '!**/node_modules/**'],
+  collectCoverageFrom: ['index.js', '!**/node_modules/**'],
   verbose: true,
   collectCoverage: false,
   coverageReporters: ['json', 'html']

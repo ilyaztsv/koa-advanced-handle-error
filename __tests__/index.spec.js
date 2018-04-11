@@ -1,4 +1,4 @@
-import handleError from '../middleware/index';
+import handleError from '../index';
 
 describe('koa-advanced-handle-error', () => {
   it('function exists', () => {
