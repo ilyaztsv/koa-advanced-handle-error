@@ -5,5 +5,9 @@ node_js:
   - '8'
   - '9'
   - 'lts/*'
-script:
+# keep the npm cache to speed up installs
+cache:
+  directories:
+  - "$HOME/.npm"
+after_success:
   - npm run ci
